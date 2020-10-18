@@ -210,25 +210,23 @@ mergeBeerBrew <- merge(Breweries,Beers, by.x = "Brew_ID", by.y = "Brewery_id")
 
 ```{r}
 
-# Question 8.2; new column for type beer
 
-filter(grepl('\\bale\\b', Style, ignore.case=T))\
-filter(grepl('\\bale\\b', Style, ignore.case=T))
+filmerBeerBrw %>% filter(grepl('\\bale\\b', Style, ignore.case=T)) %>%
+filter(grepl('\\bale\\b', Style, ignore.case=T)) %>%
 filter(grepl('\\bIPA\\b', Style, ignore.case=T))
 Ales.beer <- cbind(filmerBeerBrw, type='Ales', stringsAsFactors=F) %>% filter(grepl('\\bale\\b', Style, ignore.case=T))
 
 view(Ales.beer)
 
 
-filter(grepl('\\bipa\\b', Style, ignore.case=T))\
-filter(grepl('\\bipa\\b', Style, ignore.case=T))
+filmerBeerBrw %>% filter(grepl('\\bipa\\b', Style, ignore.case=T)) %>%
+filter(grepl('\\bipa\\b', Style, ignore.case=T)) %>%
 filter(grepl('\\bAle\\b', Style, ignore.case=T))
 IPAs.beer <- cbind(filmerBeerBrw, type='IPAs', stringsAsFactors=F) %>% filter(grepl('\\bipa\\b', Style, ignore.case=T))
 
 view(IPAs.beer)
 
 ```
-
 
 
 # Question 8.3;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
@@ -238,7 +236,7 @@ view(IPAs.beer)
 
 ```{r}
 
-#  Question 8.3; combine by row & !NA
+
 AllIPAsAleBeers <- rbind(Ales.beer, IPAs.beer)
 
  na.meripa.aleBeerBrw <- AllIPAsAleBeers %>% filter(!is.na(ABV)) %>%  filter(!is.na(IBU))
@@ -255,8 +253,6 @@ AllIPAsAleBeers <- rbind(Ales.beer, IPAs.beer)
  ### The best k value for the KNN test is 5, based on the highest point in the graph.
 
 ```{r}
-
-# Question 8.4;  Loop for many k and the average of many training / test partition
 
 iterations = 500
 numks = 30
