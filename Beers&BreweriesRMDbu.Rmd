@@ -25,7 +25,7 @@ Beers <- read.csv("H:/Schools/SMU/DoingDataScienceHomework/UnitOne/Unit One/Unit
 BrewCount <- Breweries %>% group_by(State)
 view(BrewCount)
 
-totalBrewCount = count(Breweries, "State")
+totalBrewCount = count(Breweries, State)
 view(totalBrewCount)
 
 
