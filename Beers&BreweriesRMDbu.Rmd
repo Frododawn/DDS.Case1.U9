@@ -8,11 +8,16 @@ output: html_document
 #Beers and Breweries RMD:Exploratory Data Analysis of U.S. Beers and Breweries
 
 
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
 ## Question Number 1: How many breweries are present in each state?
 
 ### This code gets count by state and gives the summary statistics.  The Median breweries per state is 7.00, the Mean is 10.94.  The least amount per state is 1 and the most is 47 (Colorado)
 
 ```{r}
+
 
 library(GGally)
 library(tidyverse)
@@ -254,6 +259,8 @@ AllIPAsAleBeers <- rbind(Ales.beer, IPAs.beer)
 
 ```{r}
 
+splitPerc = .75
+
 iterations = 500
 numks = 30
 
@@ -281,11 +288,10 @@ plot(seq(1,numks,1),MeanAcc, type = "l")
 ```
 
 
-
 # Question 8.5;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
   
   ## Based on the previous test, the best k value for the KNN test is 5 (the highest point in the graph), so we use that value to create a table and a confusion matrix that analyzes the ABV and IBU data to predict the "Ale" beers and the IPAs
-### The KNN classification test has an accuracy of 0.8529. with sensitivity 0.8550 and Specificity 0.8505.  This is a very robust analysis and shows that there are consistent differences in alcohol content and IBU between the two beer types.
+### The KNN classification test has an accuracy of 0..8613. with sensitivity 0.8794 and Specificity 0.8351.  This is a very robust analysis and shows that there are consistent differences in alcohol content and IBU between the two beer types.
 
 
 ```{r}
