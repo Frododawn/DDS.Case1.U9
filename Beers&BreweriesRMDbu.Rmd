@@ -304,8 +304,18 @@ confusionMatrix(table(test$type,classifications))
 
 ```
 
+# Question 9;  Number of Ales Vs. Number of IPAs by State.
 
+  ## This code gives the number of Ales vs. the number of IPAs by State.
+  
+  ### 
 
+```{r}  
+  
+  na.meripa.aleBeerBrw %>% ggplot(aes(x = State, fill = type)) + geom_bar() + ggtitle("Ales Vs. IPAs by State")
 
-
+summary(totalBrewCount)
+ 
+```
+  
 
