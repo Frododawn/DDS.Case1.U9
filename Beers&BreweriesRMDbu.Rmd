@@ -255,9 +255,9 @@ AllIPAsAleBeers <- rbind(Ales.beer, IPAs.beer)
  # Question 8.4;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
   
   ## This code uses the previously combined dataframe to take 500 tests to check for the best k value (nearest neighbors) to get the best results. 
- ### The best k value for the KNN test is 5, based on the highest point in the graph.
+ ### The best k value for the KNN test is 6, based on the highest point in the graph.
 
-```{r}
+```{r
 
 splitPerc = .75
 
@@ -290,14 +290,14 @@ plot(seq(1,numks,1),MeanAcc, type = "l")
 
 # Question 8.5;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
   
-  ## Based on the previous test, the best k value for the KNN test is 5 (the highest point in the graph), so we use that value to create a table and a confusion matrix that analyzes the ABV and IBU data to predict the "Ale" beers and the IPAs
-### The KNN classification test has an accuracy of 0..8613. with sensitivity 0.8794 and Specificity 0.8351.  This is a very robust analysis and shows that there are consistent differences in alcohol content and IBU between the two beer types.
+  ## Based on the previous test, the best k value for the KNN test is 6 (the highest point in the graph), so we use that value to create a table and a confusion matrix that analyzes the ABV and IBU data to predict the "Ale" beers and the IPAs
+### The KNN classification test has an accuracy of 0.8529. with sensitivity 0.8784 and Specificity 0.8111.  This is a very robust analysis and shows that there are consistent differences in alcohol content and IBU between the two beer types.
 
 
 ```{r}
 
 
-classifications = knn(train[,c(7,8)],test[,c(7,8)],train$type, prob = TRUE, k = 5)
+classifications = knn(train[,c(7,8)],test[,c(7,8)],train$type, prob = TRUE, k = 6)
 table(test$type,classifications)
 confusionMatrix(table(test$type,classifications))
 
@@ -306,9 +306,9 @@ confusionMatrix(table(test$type,classifications))
 
 # Question 9;  Number of Ales Vs. Number of IPAs by State.
 
-  ## This code gives the number of Ales vs. the number of IPAs by State.
+  ## Most states favor Ales over IPAs by a slight margin.  However, interestingly most of the coastal states tend to favor IPAs over Ales.
   
-  ### 
+  ### This code gives the number of Ales vs. the number of IPAs by State.
 
 ```{r}  
   
