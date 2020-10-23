@@ -1,0 +1,37 @@
+title: "Beers&Breweries Codebook"
+author: "Dawn Bowerman"
+date: "10/20/2020"
+output:
+  html_document:
+  keep_md: yes
+---
+
+# Beers&Breweries Codebook
+
+ 
+ ## This is an Exploratory Data Analysis of Beers and breweries in the United States for the Doing Data Science class at SMU.
+  
+  
+#The data used in this EDS was given by customer in the .cvs format
+
+ ##There were two .cvs files (Beers and Breweries) that had to be combined to get the full information.
+
+
+#Notes on Cleaning the Data:
+ ##The data was cleaned by first, checking to see if there were NAs in the data, and then eliminating the NAs that were mostly in the ABV and IBU columns where they would inhibit the analysis.
+  
+
+#Notes on packages:
+ ## The packages that were used in this analysis were:
+tidyverse
+GGally
+class
+caret
+e1071
+
+
+
+#Notes on the KNN classification:
+ ## the optimal classification was determined by a loop testing 500 iterations through 1-30 k nearest neighbors and graphing the results; the highest mean accuracy selected the best parameter to use.
+
+

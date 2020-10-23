@@ -5,7 +5,7 @@ date: "10/7/2020"
 output: html_document
 ---
 
-#Beers and Breweries RMD:Exploratory Data Analysis of U.S. Beers and Breweries
+#Beers and Breweries RMD:Exploratory Data Analysis of U.S. Beers and Breweries for Budweiser
 
 
 ```{r, echo=FALSE}
@@ -14,7 +14,9 @@ knitr::opts_chunk$set(error = TRUE)
 
 # Question Number 1: How many breweries are present in each state?
 
-## This code gets count by state and gives the summary statistics.  The Median breweries per state is 7.00, the Mean is 10.94.  The least amount per state is 1 and the most is 47 (Colorado)
+ ## This code gets count by state and gives the summary statistics.  
+
+###The Median breweries per state is 7.00, the Mean is 10.94.  The least amount per state is 1 and the most is 47 (Colorado)
 
 ```{r}
 
@@ -60,7 +62,7 @@ tail(mergeBeerBrew)
 
  ## This chunk shows where the missing values are in the dataframe.
 
-# I have determined to leave the NAs out of some of the information (IBU - ALe comparison, median alcohol) where it doesn't effect the result as much and leave in where it does (such as number of breweries)
+### After viewing the areas where there is missing data, I have determined to leave the NAs out of some of the information (IBU - ALe comparison, median alcohol) where it doesn't effect the result as much and leave in where it does (such as number of breweries)
 
 ```{r}
 
@@ -74,9 +76,10 @@ view(cleanMergeBeerBrew)
 
 # number3 & 4: Address the missing values in each column & Compute the median alcohol content for each state. Plot a bar chart to compare.
 
- ## This chunk filters the ABV na's out of the dataframe and summarizes the median Alcohol by Volume by state and plots it 
 
-### The median alcohol is by volume for most states is about 0.056, Utah and New Jersey are atypically low.  
+### The median alcohol by volume for most states is about 0.056, Utah and New Jersey are atypically low.  
+
+ ## This chunk filters the ABV na's out of the dataframe and summarizes the median Alcohol by Volume by state and plots it 
 
 ```{r}
 
@@ -86,8 +89,10 @@ mergeBeerBrew %>% filter(!is.na(ABV)) %>% group_by(State) %>% summarise(medianAB
 
 # number3 & 4: Address the missing values in each column & Compute the international bitterness unit for each state. Plot a bar chart to compare.
 
-##This chunk filters the IBU na's out of the dataframe and summarizes the median International Bitterness Units (IBU) by state and plots it 
-### The median IBU by state has more variability that the ABV. 
+## The median IBU by state has more variability that the ABV.  States with the most bitter beer are Maine and West Virginia.  States with the lowest are Wisconsin and Wyoming.
+
+
+ ##This chunk filters the IBU Na's out of the dataframe and summarizes the median International Bitterness Units (IBU) by state and plots it 
 
 ```{r}
 
@@ -101,9 +106,11 @@ mergeBeerBrew %>% filter(!is.na(ABV)) %>% group_by(State) %>% summarise(medianAB
 
 
 # Question number 5.1; Which state has the maximum alcoholic (ABV) beer? 
-## This chunk groups by ABV and State and plots the Alcohol by Volume (ABV) by state.
-### The State withe the highest ABV is Colorado.  Kentucky and Indiana aren't far behind.  Most breweries have a maximum ABV of 0.100
 
+## The State with the beer with the highest ABV is Colorado.  Kentucky and Indiana are second and third.  Most breweries have a maximum ABV of 0.100.
+
+
+ ### This chunk groups by ABV and State and plots the Alcohol by Volume (ABV) by state.
 ```{r}
 
 
@@ -117,9 +124,9 @@ ggplot(by_ABVBeerBrew, aes(x=State, y=ABV, color = State)) +
 
 # Question number 5.2; Which state has the most bitter (IBU) beer?
 
+## Again, bitterness is more variable than ABV.  The states with the most bitter beer are 1st, 2nd, and 3rd, respectively; Oregon, Virginia, and Maine.
 
-## This chunk groups by IBU and State and plots the International Bitterness Unit (IBV) by state
- ### The states with the most bitter beer are 1st, 2nd, and 3rd, respectively; Oregon, Virginia, and Maine.  
+ ### This chunk groups by IBU and State and plots the International Bitterness Unit (IBV) by state
 
 ```{r}
 
@@ -132,12 +139,14 @@ ggplot(by_IBUBeerBrew, aes(x=State, y=IBU, color = State)) +
 ```
 
 
-
 # question number 6:  Comment on the summary statistics and distribution of the ABV variable
+
  
- ## This chunk filters the na's of the ABV variable and plots a histogram of the ABV.  Then gives a summary of the variable.
- 
-### The distribution of the Alcohol by Volume variable is right-skewed starting at about 0.025 and The largest portion ends at about 0.10 and then has a few outliers after that.  The median is  0.05600 and the mean is 0.05977.  The Max is 0.128 ABV.  There were 62 beers that did not have their ABV listed in the dataframe.
+## The distribution of the Alcohol by Volume variable is right-skewed starting at about 0.025 and The largest portion ends at about 0.10 and then has a few outliers after that.  The median is  0.05600 and the mean is 0.05977.  The Max is 0.128 ABV.  There were 62 beers that did not have their ABV listed in the dataframe.
+
+
+ ### This chunk filters the na's of the ABV variable and plots a histogram of the ABV.  Then gives a summary of the variable.
+
 
 ```{r}
 
@@ -151,10 +160,11 @@ summary(mergeBeerBrew$ABV)
 ```
 # Question 7.1;   Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.  Make your best judgment of a relationship and EXPLAIN your answer.
 
- ## This code plots a scatter plot of ABV by IBU and colors by State.
 
-### Looking at the graph, The relationship between ABU and IBU does look linear, however there is a node at 0.05 ABV and 20-25 IBU that's dense indicating that most beers are created with these characteristics.  Notice also, that there are some high ABV beers that are not as bitter; This might be beers that don’t have as much hops in them or were created to be less bitter.
+## Looking at the graph, The relationship between ABU and IBU does look linear, however there is an area at 0.05 ABV and 20-25 IBU that's dense indicating that most beers are created with these characteristics.  Notice also, that there are some high ABV beers that are not as bitter; This might be beers that don’t have as much hops in them or were created to be less bitter.
 
+ 
+ ### This code plots a scatter plot of ABV by IBU and colors by State.
 
 ```{r}
 
@@ -168,10 +178,10 @@ geom_point() + ggtitle("Beer Alcohol Content v. Beer IBU")
 # Question 7.2;   ABV vs. IBU by State; 
 
 
- ## This chunk does the same as the previous code but with separate graphs by state.
+## If you look at each states' plot some are very linear where others tend to split off from the main line.  Each state has a unique profile. It would seem some beers are made with a high ABV and a lower bitterness profile.  You can still see the dense area at 0.055 ABV and 20-25 IBU especially in the Colorado and California plots.
 
-###If you look at each states' plot some are very linear where others tend to split off from the main line.  Each state has a unique profile. It would seem some beers are made with a high ABV and a lower bitterness profile.  You can still see the node at 0.055 ABV and 20-25 IBU especially in the Colorado and California plots.
 
+ ### This chunk does the same as the previous code but with separate graphs by state.
 
 ```{r}
 
@@ -185,8 +195,7 @@ ggplot(data = mergeBeerBrew) +
 # Question 8.1;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
   
   
-## This chunk sets up the statistical packages and merges and filters the data again for the following code.
-  
+ ## This chunk sets up the statistical packages and merges and filters the data again for the following code.
   
   
 ```{r}
@@ -212,7 +221,7 @@ mergeBeerBrew <- merge(Breweries,Beers, by.x = "Brew_ID", by.y = "Brewery_id")
 # Question 8.2;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
 
   
-## This code filters the Style column and creates a new column based on the type of Beer in the Style column.  Getting the data ready to use in the KNN code.
+ ## This code filters the Style column and creates a new column based on the type of Beer in the Style column.  Getting the data ready to use in the KNN code.
 
 
 ```{r}
@@ -239,7 +248,7 @@ view(IPAs.beer)
 # Question 8.3;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
   
   
-## This chunk combines the two previous dataframes by row & filters NA's.  
+ ## This chunk combines the two previous dataframes by row & filters NA's.  
 
 
 ```{r}
@@ -258,9 +267,7 @@ AllIPAsAleBeers <- rbind(Ales.beer, IPAs.beer)
 #Question 8.4;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
   
   
-## This code uses the previously combined dataframe to take 500 tests to check for the best k value (nearest neighbors) to get the best results.
-  
- ### The best k value for the KNN test is 6, based on the highest point in the graph.
+## This code uses the previously combined dataframe to take 500 tests to check for the best k value (nearest neighbors) to get the best classification results. The best k value for the KNN test is 6, based on the highest point in the graph.
 
 ```{r
 
@@ -296,7 +303,8 @@ plot(seq(1,numks,1),MeanAcc, type = "l")
 # Question 8.5;  Budweiser would also like to investigate the difference with respect to IBU and ABV between IPAs (India Pale Ales) and other types of Ale (any beer with “Ale” in its name other than IPA).  You decide to use KNN classification to investigate this relationship.  Provide statistical evidence one way or the other.
   
   
-## Based on the previous test, the best k value for the KNN test is 6 (the highest point in the graph), so we use that value to create a table and a confusion matrix that analyzes the ABV and IBU data to predict the "Ale" beers and the IPAs
+## Based on the previous test, the best k value for the KNN test is 6 (the highest point in the graph), so we use that value to create a table and a confusion matrix that analyzes the ABV and IBU data to predict the "Ale" beers and the IPAs.
+
 ### The KNN classification test has an accuracy of 0.8529. with sensitivity 0.8784 and Specificity 0.8111.  This is a very robust analysis and shows that there are consistent differences in alcohol content and IBU between the two beer types.
 
 
@@ -313,7 +321,7 @@ confusionMatrix(table(test$type,classifications))
 # Question 9;  Number of Ales Vs. Number of IPAs by State.
 
   
-## Most states favor Ales over IPAs by a slight margin.  However, interestingly most of the coastal states tend to favor IPAs over Ales.
+## Shown by this graph, most states favor Ales over IPAs by a slight margin.  However, interestingly most of the coastal states tend to favor IPAs over Ales.
   
   ### This code gives the number of Ales vs. the number of IPAs by State.
 
@@ -321,7 +329,7 @@ confusionMatrix(table(test$type,classifications))
   
   na.meripa.aleBeerBrw %>% ggplot(aes(x = State, fill = type)) + geom_bar() + ggtitle("Ales Vs. IPAs by State")
 
-summary(totalBrewCount)
+
  
 ```
   
