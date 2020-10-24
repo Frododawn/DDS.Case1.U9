@@ -62,7 +62,7 @@ tail(mergeBeerBrew)
 
  ## This chunk shows where the missing values are in the dataframe.
 
-### After viewing the areas where there is missing data, I have determined to leave the NAs out of some of the information (IBU - ALe comparison, median alcohol) where it doesn't effect the result as much and leave in where it does (such as number of breweries)
+### After viewing the areas where there is missing data, I have determined to delete the NAs out of some of the analysis (IBU - ALe comparison, median alcohol) where it doesn't effect the result as much and leave in where it does (such as number of breweries.)  The missing values are MCAR (Missing Completely at Random) in my determination as their missing value has nothing to do with their hypothetical value and with the values of other variables.
 
 ```{r}
 

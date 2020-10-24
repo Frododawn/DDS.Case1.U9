@@ -462,8 +462,8 @@ head(mergeBeerBrew)</code></pre>
 <div id="number-3-address-the-missing-values-in-each-column-also-see-next-chunk." class="section level1">
 <h1>number 3: Address the missing values in each column; also see next chunk.</h1>
 <p>## This chunk shows where the missing values are in the dataframe.</p>
-<div id="after-viewing-the-areas-where-there-is-missing-data-i-have-determined-to-leave-the-nas-out-of-some-of-the-information-ibu---ale-comparison-median-alcohol-where-it-doesnt-effect-the-result-as-much-and-leave-in-where-it-does-such-as-number-of-breweries" class="section level3">
-<h3>After viewing the areas where there is missing data, I have determined to leave the NAs out of some of the information (IBU - ALe comparison, median alcohol) where it doesn’t effect the result as much and leave in where it does (such as number of breweries)</h3>
+<div id="after-viewing-the-areas-where-there-is-missing-data-i-have-determined-to-delete-the-nas-out-of-some-of-the-analysis-ibu---ale-comparison-median-alcohol-where-it-doesnt-effect-the-result-as-much-and-leave-in-where-it-does-such-as-number-of-breweries.-the-missing-values-are-mcar-missing-completely-at-random-in-my-determination-as-their-missing-value-has-nothing-to-do-with-their-hypothetical-value-and-with-the-values-of-other-variables." class="section level3">
+<h3>After viewing the areas where there is missing data, I have determined to delete the NAs out of some of the analysis (IBU - ALe comparison, median alcohol) where it doesn’t effect the result as much and leave in where it does (such as number of breweries.) The missing values are MCAR (Missing Completely at Random) in my determination as their missing value has nothing to do with their hypothetical value and with the values of other variables.</h3>
 <pre class="r"><code>cleanMergeBeerBrew &lt;- !is.na(mergeBeerBrew)
 view(cleanMergeBeerBrew)</code></pre>
 </div>
